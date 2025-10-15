@@ -1,20 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import MainStack from './src/navigation';
+import Provider from './src/provider';
+import { StatusBar } from 'react-native';
+import { COLORS } from './src/utils/theme';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello GetPayIn</Text>
-    </View>
+    <Provider>
+      <StatusBar backgroundColor={COLORS.primary} barStyle={'light-content'} />
+      <MainStack />
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;

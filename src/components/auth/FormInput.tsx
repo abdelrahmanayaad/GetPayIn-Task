@@ -1,18 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ViewStyle } from 'react-native';
 import React from 'react';
 import { FONTS, FONTS_FAMILY } from '../../utils/constants';
 import { COLORS } from '../../utils/theme';
 import { CustomTextInput } from '../ui';
 
 type FormInputType = {
+  formInoutContainer?: ViewStyle;
   label: string;
   placeholder: string;
   type?: 'email' | 'password';
 };
 
-const FormInput = ({ label, placeholder, type }: FormInputType) => {
+const FormInput = ({
+  formInoutContainer,
+  label,
+  placeholder,
+  type,
+}: FormInputType) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputContainer, formInoutContainer]}>
       <Text style={styles.labelStyle}>{label}</Text>
       <CustomTextInput
         style={styles.inputStyle}

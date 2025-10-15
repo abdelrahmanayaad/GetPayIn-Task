@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, ImageURISource, StyleProp, ViewStyle } from 'react-native';
-import { FONTS_FAMILY } from '../utils/constants';
+import { FONTS, FONTS_FAMILY } from '../utils/constants';
 import { COLORS } from '../utils/theme';
 import { HomeStack, ProfileStack } from './stacks';
 import { TabsParamList } from './types';
+import { ComponentType, useMemo } from 'react';
 
 const Tab = createBottomTabNavigator<TabsParamList>();
 
@@ -19,30 +20,32 @@ const tabBarStyleOptions: StyleProp<ViewStyle> = {
 export const Tabs = () => {
   const APP_TABS: {
     name: keyof TabsParamList;
-    component: any;
+    component: ComponentType;
     label: string;
     image: ImageURISource;
-  }[] = [
-    {
-      name: 'HomeStack',
-      component: HomeStack,
-      label: 'Home',
-      image: require('../assets/icons/home.png'),
-    },
-    {
-      name: 'ProfileStack',
-      component: ProfileStack,
-      label: 'Profile',
-      image: require('../assets/icons/profile.png'),
-    },
-  ];
+  }[] = useMemo(
+    () => [
+      {
+        name: 'HomeStack',
+        component: HomeStack,
+        label: 'Home',
+        image: require('../assets/icons/home.png'),
+      },
+      {
+        name: 'ProfileStack',
+        component: ProfileStack,
+        label: 'Profile',
+        image: require('../assets/icons/profile.png'),
+      },
+    ],
+    [],
+  );
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.gray_5d5d5dff,
-        tabBarLabelStyle: { fontWeight: 'bold', fontSize: 11 },
         tabBarStyle: tabBarStyleOptions,
       }}
     >
@@ -52,7 +55,10 @@ export const Tabs = () => {
           name={name}
           component={component}
           options={{
-            tabBarLabelStyle: { fontFamily: FONTS_FAMILY.medium },
+            tabBarLabelStyle: {
+              fontFamily: FONTS_FAMILY.medium,
+              fontSize: FONTS.xs,
+            },
             tabBarLabel: label,
             tabBarIcon: ({ color }) => (
               <Image

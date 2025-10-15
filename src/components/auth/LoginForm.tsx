@@ -6,6 +6,10 @@ import { Text } from 'react-native-gesture-handler';
 import { COLORS } from '../../utils/theme';
 
 const LoginForm = () => {
+  const message = (message: string) => {
+    Alert.alert('Message', message);
+  };
+
   return (
     <View>
       <FormInput label="Email" placeholder="Enter your Email" type="email" />
@@ -15,15 +19,13 @@ const LoginForm = () => {
         placeholder="Enter your password"
         type="password"
       />
-      <Pressable
-        onPress={() => Alert.alert('Message', 'Forget password coming soon!')}
-      >
+      <Pressable onPress={() => message('Forget password coming soon!')}>
         <Text style={styles.forgetPasswordTitle}>Forget password?</Text>
       </Pressable>
       <CustomButton
         style={styles.buttonstyle}
         title="Login"
-        onPress={() => Alert.alert('Message', 'Navigate to home')}
+        onPress={() => message('Navigate to home')}
       />
     </View>
   );

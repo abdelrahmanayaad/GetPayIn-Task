@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 const LoginHeader = () => {
-  const { width, height } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   return (
     <View style={[{ height: height * 0.25 }, styles.headerStyle]}>
       <Image

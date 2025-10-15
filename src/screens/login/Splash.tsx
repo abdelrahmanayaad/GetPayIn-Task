@@ -8,9 +8,10 @@ const Splash = () => {
   const navigation = useNavigation<SplashScreenNavigationProp>();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       navigation.replace('AuthStack');
     }, 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

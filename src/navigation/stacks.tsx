@@ -7,7 +7,6 @@ import {
   ProfileStackParamList,
 } from './types';
 import { Profile } from '../screens/profile';
-import { useState } from 'react';
 
 const AuthStackNavigator = createStackNavigator<AuthStackParamList>();
 const HomeStackNavigator = createStackNavigator<HomeStackParamList>();

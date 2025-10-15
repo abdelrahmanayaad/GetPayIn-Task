@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm';
 import LoginHeader from './LoginHeader';
-import FormInput from '../auth/FormInput';
+import FormInput from './FormInput';
 
 export { LoginHeader, LoginForm, FormInput };

@@ -14,7 +14,12 @@ const FormInput = ({ label, placeholder, type }: FormInputType) => {
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.labelStyle}>{label}</Text>
-      <CustomTextInput style={styles.inputStyle} placeholder={placeholder} />
+      <CustomTextInput
+        style={styles.inputStyle}
+        placeholder={placeholder}
+        secureTextEntry={type === 'password'}
+        keyboardType={type === 'email' ? 'email-address' : 'default'}
+      />
     </View>
   );
 };
@@ -35,6 +40,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.gray_ddd,
     borderRadius: 5,
+    fontSize: FONTS.sm,
+    color: COLORS.gray_5d5d5dff,
   },
 });
 

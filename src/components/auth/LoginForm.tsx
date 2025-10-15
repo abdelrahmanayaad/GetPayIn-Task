@@ -6,8 +6,12 @@ import FormInput from './FormInput';
 const LoginForm = () => {
   return (
     <View>
-      <FormInput label="Email" placeholder="Enter your Email" />
-      <FormInput label="Password" placeholder="Enter your password" />
+      <FormInput label="Email" placeholder="Enter your Email" type="email" />
+      <FormInput
+        label="Password"
+        placeholder="Enter your password"
+        type="password"
+      />
       <CustomButton title="Login" onPress={() => console.log('Login')} />
     </View>
   );

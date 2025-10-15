@@ -30,9 +30,6 @@ const styles = StyleSheet.create({
     color: COLORS.gray_aaa,
     marginBottom: 100,
   },
-  formContainer: {
-    width: '100%',
-  },
 });
 
 export default Login;

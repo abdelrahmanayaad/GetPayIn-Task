@@ -25,3 +25,5 @@ export type ProfileStackParamList = {
 
 export type SplashScreenNavigationProp =
   StackNavigationProp<RootStackParamList>;
+
+export type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList>;

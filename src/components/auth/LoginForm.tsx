@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { CustomButton } from '../ui';
 import FormInput from './FormInput';
 
@@ -12,9 +12,19 @@ const LoginForm = () => {
         placeholder="Enter your password"
         type="password"
       />
-      <CustomButton title="Login" onPress={() => console.log('Login')} />
+      <CustomButton
+        style={styles.buttonstyle}
+        title="Login"
+        onPress={() => console.log('Login')}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonstyle: {
+    marginBottom: 20,
+  },
+});
 
 export default LoginForm;

@@ -25,16 +25,16 @@ export const AuthStack = () => {
 
 export const HomeStack = () => {
   return (
-    <HomeStackNavigator.Group screenOptions={{ headerShown: false }}>
+    <HomeStackNavigator.Navigator screenOptions={{ headerShown: false }}>
       <HomeStackNavigator.Screen name="Home" component={Home} />
-    </HomeStackNavigator.Group>
+    </HomeStackNavigator.Navigator>
   );
 };
 
 export const ProfileStack = () => {
   return (
-    <ProfileStackNavigator.Group screenOptions={{ headerShown: false }}>
+    <ProfileStackNavigator.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStackNavigator.Screen name="Profile" component={Profile} />
-    </ProfileStackNavigator.Group>
+    </ProfileStackNavigator.Navigator>
   );
 };

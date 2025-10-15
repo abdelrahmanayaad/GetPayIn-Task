@@ -4,10 +4,22 @@ import { CustomButton } from '../ui';
 import FormInput from './FormInput';
 import { Text } from 'react-native-gesture-handler';
 import { COLORS } from '../../utils/theme';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import { LoginScreenNavigationProp } from '../../navigation/types';
 
 const LoginForm = () => {
+  const navigation = useNavigation<LoginScreenNavigationProp>();
   const message = (message: string) => {
     Alert.alert('Message', message);
+  };
+
+  const handleLoginIn = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Tabs' }],
+      }),
+    );
   };
 
   return (
@@ -25,7 +37,7 @@ const LoginForm = () => {
       <CustomButton
         style={styles.buttonstyle}
         title="Login"
-        onPress={() => message('Navigate to home')}
+        onPress={handleLoginIn}
       />
     </View>
   );

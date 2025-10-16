@@ -10,11 +10,17 @@ import {
 import { CategoryType } from '../../types/types';
 import { categories, FONTS, FONTS_FAMILY } from '../../utils/constants';
 import { COLORS } from '../../utils/theme';
+import { useNavigation } from '@react-navigation/native';
+import { HomeScreenNavigationProp } from '../../navigation/types';
 
 const HomeCategories = () => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
   const renderCategories = ({ item }: { item: CategoryType }) => {
     return (
-      <Pressable onPress={item.onPress} style={styles.categoryItemContainer}>
+      <Pressable
+        onPress={() => item.onPress(navigation)}
+        style={styles.categoryItemContainer}
+      >
         <View style={styles.categoryViewStyle}>
           <Image source={item.image} style={styles.categoryLogoStyle} />
         </View>

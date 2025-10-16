@@ -1,3 +1,5 @@
+import { Alert } from 'react-native';
+import { HomeScreenNavigationProp } from '../navigation/types';
 import { CategoryType } from '../types/types';
 
 export const FONTS = {
@@ -21,51 +23,60 @@ export const categories: CategoryType[] = [
   {
     name: 'Watches',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Watches'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Watches' }),
   },
   {
     name: 'Bags',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Bags'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Bags' }),
   },
   {
     name: 'Clothing',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Clothing'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Clothing' }),
   },
   {
     name: 'Shoes',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Shoes'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Shoes' }),
   },
   {
     name: 'Electronics',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Electronics'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Electronics' }),
   },
   {
     name: 'Beauty',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Beauty'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Beauty' }),
   },
   {
     name: 'Sports',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Sports'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Sports' }),
   },
   {
     name: 'Home',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Home'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Home' }),
   },
   {
     name: 'Toys',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('Toys'),
+    onPress: (navigation: HomeScreenNavigationProp) =>
+      navigation.navigate('Category', { category: 'Toys' }),
   },
   {
     name: 'More',
     image: require('../assets/icons/profile.png'),
-    onPress: () => console.log('More Categories'),
+    onPress: () => Alert.alert('Message', 'More category'),
   },
 ];

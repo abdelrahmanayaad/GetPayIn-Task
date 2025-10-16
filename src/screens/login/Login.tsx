@@ -36,11 +36,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   exploreTitleStyle: {
-    textAlign: 'center',
-    fontSize: FONTS.xlg,
+    fontSize: FONTS.md,
     fontFamily: FONTS_FAMILY.regular,
     color: COLORS.gray_aaa,
-    marginBottom: 100,
+    marginBottom: 30,
   },
 });
 

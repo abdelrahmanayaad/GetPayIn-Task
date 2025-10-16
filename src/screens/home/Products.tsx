@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
   productsTitle: {
-    fontSize: FONTS.xlg,
+    fontSize: FONTS.lg,
     fontFamily: FONTS_FAMILY.medium,
   },
   columnWrapperStyle: {

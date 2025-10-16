@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   categoriesTitle: {
-    fontSize: FONTS.xlg,
+    fontSize: FONTS.lg,
     fontFamily: FONTS_FAMILY.medium,
     marginBottom: 20,
   },

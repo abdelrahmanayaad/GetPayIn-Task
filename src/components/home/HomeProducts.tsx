@@ -1,0 +1,29 @@
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FONTS, FONTS_FAMILY } from '../../utils/constants';
+import ProductCard from './ProductCard';
+
+const HomeProducts = () => {
+  return (
+    <View style={styles.productsContainer}>
+      <Text style={styles.productTitle}>Products</Text>
+      <FlatList
+        numColumns={2}
+        data={[1, 2, 3, 4, 5]}
+        renderItem={() => <ProductCard />}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  productsContainer: {
+    marginBottom: 20,
+  },
+  productTitle: {
+    fontSize: FONTS.xlg,
+    fontFamily: FONTS_FAMILY.medium,
+    marginBottom: 20,
+  },
+});
+export default HomeProducts;

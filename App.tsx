@@ -7,7 +7,7 @@ import { COLORS } from './src/utils/theme';
 const App = () => {
   return (
     <Provider>
-      <StatusBar backgroundColor={COLORS.primary} barStyle={'light-content'} />
+      <StatusBar backgroundColor={COLORS.white} barStyle={'dark-content'} />
       <MainStack />
     </Provider>
   );

@@ -1,3 +1,4 @@
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
@@ -17,6 +18,10 @@ export type AuthStackParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
+  Category: {
+    category: string;
+  };
+  Products: undefined;
 };
 
 export type ProfileStackParamList = {
@@ -27,3 +32,6 @@ export type SplashScreenNavigationProp =
   StackNavigationProp<RootStackParamList>;
 
 export type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList>;
+export type HomeScreenNavigationProp = StackNavigationProp<HomeStackParamList>;
+
+export type CategoryRouteProp = RouteProp<HomeStackParamList, 'Category'>;

@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home } from '../screens/home';
+import { Category, Home } from '../screens/home';
 import { Login } from '../screens/login';
 import {
   AuthStackParamList,
@@ -7,6 +7,7 @@ import {
   ProfileStackParamList,
 } from './types';
 import { Profile } from '../screens/profile';
+import Products from '../screens/home/Products';
 
 const AuthStackNavigator = createStackNavigator<AuthStackParamList>();
 const HomeStackNavigator = createStackNavigator<HomeStackParamList>();
@@ -27,6 +28,8 @@ export const HomeStack = () => {
   return (
     <HomeStackNavigator.Navigator screenOptions={{ headerShown: false }}>
       <HomeStackNavigator.Screen name="Home" component={Home} />
+      <HomeStackNavigator.Screen name="Category" component={Category} />
+      <HomeStackNavigator.Screen name="Products" component={Products} />
     </HomeStackNavigator.Navigator>
   );
 };

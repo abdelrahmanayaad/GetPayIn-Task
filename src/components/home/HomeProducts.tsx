@@ -18,7 +18,7 @@ const HomeProducts = () => {
   return (
     <View style={styles.productsContainer}>
       <View style={styles.productHeaderStyle}>
-        <Text style={styles.productTitle}>Products</Text>
+        <Text style={styles.productTitle}>Recommended products</Text>
         <Pressable style={styles.seeAllButtonStyle} onPress={handleSeeAll}>
           <Text style={styles.seeAllStyle}>See all</Text>
           <Image

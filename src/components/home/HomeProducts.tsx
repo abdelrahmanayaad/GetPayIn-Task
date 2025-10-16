@@ -12,6 +12,7 @@ const HomeProducts = () => {
         columnWrapperStyle={styles.columnWrapperStyle}
         data={[1, 2, 3, 4, 5]}
         renderItem={() => <ProductCard />}
+        keyExtractor={item => item.toString()}
       />
     </View>
   );

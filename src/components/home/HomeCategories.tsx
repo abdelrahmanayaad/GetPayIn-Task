@@ -2,34 +2,19 @@ import React from 'react';
 import {
   FlatList,
   Image,
-  ImageURISource,
   Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { CategoryType } from '../../types/types';
 import { categories, FONTS, FONTS_FAMILY } from '../../utils/constants';
 import { COLORS } from '../../utils/theme';
 
-type categoryType = {
-  name: string;
-  image: ImageURISource;
-  onPress: () => void;
-};
-
 const HomeCategories = () => {
-  const renderCategories = ({
-    item,
-    index,
-  }: {
-    item: categoryType;
-    index: number;
-  }) => {
+  const renderCategories = ({ item }: { item: CategoryType }) => {
     return (
-      <Pressable
-        onPress={() => item.onPress()}
-        style={styles.categoryItemContainer}
-      >
+      <Pressable onPress={item.onPress} style={styles.categoryItemContainer}>
         <View style={styles.categoryViewStyle}>
           <Image source={item.image} style={styles.categoryLogoStyle} />
         </View>

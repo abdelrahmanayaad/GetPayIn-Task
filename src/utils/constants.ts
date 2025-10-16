@@ -1,4 +1,4 @@
-import { categoryType } from '../types/types';
+import { CategoryType } from '../types/types';
 
 export const FONTS = {
   xs: 12,
@@ -17,7 +17,7 @@ export const FONTS_FAMILY = {
   light: 'Roboto-Light',
 };
 
-export const categories: categoryType[] = [
+export const categories: CategoryType[] = [
   {
     name: 'Watches',
     image: require('../assets/icons/profile.png'),

@@ -9,6 +9,7 @@ const HomeProducts = () => {
       <Text style={styles.productTitle}>Products</Text>
       <FlatList
         numColumns={2}
+        columnWrapperStyle={styles.columnWrapperStyle}
         data={[1, 2, 3, 4, 5]}
         renderItem={() => <ProductCard />}
       />
@@ -24,6 +25,10 @@ const styles = StyleSheet.create({
     fontSize: FONTS.xlg,
     fontFamily: FONTS_FAMILY.medium,
     marginBottom: 20,
+  },
+  columnWrapperStyle: {
+    justifyContent: 'space-between',
+    marginBottom: 10,
   },
 });
 export default HomeProducts;

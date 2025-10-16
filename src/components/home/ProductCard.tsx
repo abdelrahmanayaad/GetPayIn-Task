@@ -40,11 +40,9 @@ const ProductCard = () => {
 const styles = StyleSheet.create({
   productCardContainer: {
     width: '47%',
-    height: 250,
+    height: 300,
     borderRadius: 10,
     backgroundColor: COLORS.white,
-    marginEnd: '6%',
-    marginBottom: 50,
   },
   productImageViewStyle: {
     width: '100%',

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
   categoriesTitle: {
-    fontSize: FONTS.xlg,
+    fontSize: FONTS.lg,
     fontFamily: FONTS_FAMILY.medium,
   },
   columnWrapperStyle: {

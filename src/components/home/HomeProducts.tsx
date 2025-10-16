@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productTitle: {
-    fontSize: FONTS.xlg,
+    fontSize: FONTS.lg,
     fontFamily: FONTS_FAMILY.medium,
   },
   seeAllButtonStyle: {

@@ -1,15 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ProductCard } from '../../components/home';
+import {
+  CategoryRouteProp,
+  HomeScreenNavigationProp,
+} from '../../navigation/types';
 import { FONTS, FONTS_FAMILY } from '../../utils/constants';
 import { COLORS } from '../../utils/theme';
-import { CategoryRouteProp } from '../../navigation/types';
 
 const Category = ({ route }: { route: CategoryRouteProp }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const category = route.params.category;
 
@@ -17,22 +20,23 @@ const Category = ({ route }: { route: CategoryRouteProp }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Pressable onPress={handleGoBack} style={styles.titleContainer}>
-          <Image
-            style={styles.backIconStyle}
-            source={require('../../assets/icons/back-left.png')}
-          />
-          <Text style={styles.categoriesTitle}>{category}</Text>
-        </Pressable>
-        <FlatList
-          numColumns={2}
-          columnWrapperStyle={styles.columnWrapperStyle}
-          data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-          renderItem={() => <ProductCard />}
-          keyExtractor={item => item.toString()}
-        />
-      </ScrollView>
+      <FlatList
+        ListHeaderComponent={
+          <Pressable onPress={handleGoBack} style={styles.titleContainer}>
+            <Image
+              style={styles.backIconStyle}
+              source={require('../../assets/icons/back-left.png')}
+            />
+            <Text style={styles.categoriesTitle}>{category}</Text>
+          </Pressable>
+        }
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapperStyle}
+        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+        renderItem={() => <ProductCard />}
+        keyExtractor={item => item.toString()}
+      />
     </SafeAreaView>
   );
 };

@@ -15,7 +15,21 @@ const Profile = () => {
         />
       </View>
       <CustomButton
-        onPress={() => Alert.alert('Logout', 'You are sure for logout ?')}
+        onPress={() =>
+          Alert.alert('Logout', 'Are you sure you want to logout?', [
+            {
+              text: 'Cancel',
+              style: 'cancel',
+            },
+            {
+              text: 'Logout',
+              onPress: () => {
+                console.log('User logged out');
+              },
+              style: 'destructive',
+            },
+          ])
+        }
         title="Logout"
       />
     </SafeAreaView>

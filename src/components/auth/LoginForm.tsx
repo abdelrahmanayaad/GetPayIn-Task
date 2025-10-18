@@ -1,7 +1,6 @@
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Alert, Image, Pressable, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-gesture-handler';
+import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import useLogin from '../../apis/auth/useAuth';
 import useLoginForm from '../../hooks/login/useForm';

@@ -9,10 +9,10 @@ import {
 import { COLORS } from '../../utils/theme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { OVERLAY_COLOR } from '../../utils/constants';
 
 const Loader = () => {
   const isLoading = useSelector((state: RootState) => state.loader.isLoading);
-  const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.5)';
   return (
     <Modal
       visible={isLoading}

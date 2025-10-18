@@ -1,9 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { Fragment, PropsWithChildren } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { CustomInternetConnection, Loader } from '../components/ui';
-import { store } from '../store';
+import { RootState, store } from '../store';
+import { LockOverlay } from '../components/auth/LockOverlay';
+import { useInactivityLock } from '../hooks/global/useInactivityLock';
 
 const queryClient = new QueryClient();
 
@@ -20,10 +22,13 @@ const Providers = ({ children }: PropsWithChildren) => {
 };
 
 const AppContainer = ({ children }: PropsWithChildren) => {
+  const { isLocked } = useSelector((state: RootState) => state.auth);
+  useInactivityLock();
   return (
     <Fragment>
       <CustomInternetConnection />
       <Loader />
+      <LockOverlay visible={isLocked} />
       {children}
     </Fragment>
   );

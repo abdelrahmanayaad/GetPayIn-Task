@@ -4,6 +4,8 @@ import { CategoryType } from '../types/types';
 
 export const BASE_URL = 'https://dummyjson.com';
 export const SUPER_ADMIN_USERNAME = 'emilys';
+export const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.5)';
+export const INACTIVITY_TIMEOUT = 10000;
 
 export const FONTS = {
   xs: 12,

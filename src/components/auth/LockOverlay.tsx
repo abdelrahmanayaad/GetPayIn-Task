@@ -153,11 +153,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    padding: 10,
     paddingVertical: 40,
+    paddingHorizontal: 16,
     width: '100%',
     alignItems: 'center',
-    marginHorizontal: 6,
     shadowColor: COLORS.black,
     shadowOffset: {
       width: 0,

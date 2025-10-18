@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactNativeBiometrics from 'react-native-biometrics';
 
 interface AuthenticateResult {
@@ -73,9 +73,9 @@ const useBiometrics = (): UseBiometricsResult => {
     }
   }, [biometricService]);
 
-  useState(() => {
+  useEffect(() => {
     checkAvailability();
-  });
+  }, [checkAvailability]);
 
   const authenticate = useCallback(
     async (promptMessage?: string): Promise<AuthenticateResult> => {

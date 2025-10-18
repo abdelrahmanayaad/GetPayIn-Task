@@ -120,6 +120,7 @@ const LoginForm = () => {
         }}
         error={inputsErrors.usernameError}
         autoCapitalize="none"
+        autoCorrect={false}
       />
       <FormInput
         formInoutContainer={styles.formInoutContainer}
@@ -135,6 +136,7 @@ const LoginForm = () => {
         rightIcon={rightIcon}
         showPassword={isPasswordHidden}
         autoCapitalize="none"
+        autoCorrect={false}
       />
       <Pressable onPress={() => showMessage('Forget password coming soon!')}>
         <Text style={styles.forgetPasswordTitle}>Forget password?</Text>

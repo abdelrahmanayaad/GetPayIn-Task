@@ -1,24 +1,24 @@
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Alert, Image, Pressable, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-gesture-handler';
-import { CommonActions, useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { useForm } from '../../hooks/login';
 import useLogin from '../../apis/auth/useAuth';
+import useLoginForm from '../../hooks/login/useForm';
+import { LoginScreenNavigationProp } from '../../navigation/types';
+import { setCredentials } from '../../store/auth';
+import { hideLoader, showLoader } from '../../store/loader';
+import { LoginResponseInterface } from '../../types/types';
+import { FONTS, FONTS_FAMILY } from '../../utils/constants';
+import { COLORS } from '../../utils/theme';
 import { CustomButton } from '../ui';
 import FormInput from './FormInput';
-import { hideLoader, showLoader } from '../../store/loader';
-import { setCredentials } from '../../store/auth';
-import { COLORS } from '../../utils/theme';
-import { FONTS, FONTS_FAMILY } from '../../utils/constants';
-import { LoginScreenNavigationProp } from '../../navigation/types';
-import { AuthInitialStateInterface, UserInterface } from '../../types/types';
 
 const LoginForm = () => {
   const [apiError, setApiError] = useState('');
-  const [showPassword, setShowPassword] = useState(true);
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
 
-  const { handleInputChange, inputs, setErrors, inputsErrors } = useForm();
+  const { handleInputChange, inputs, setErrors, inputsErrors } = useLoginForm();
   const dispatch = useDispatch();
   const navigation = useNavigation<LoginScreenNavigationProp>();
   const { mutate } = useLogin();
@@ -27,7 +27,7 @@ const LoginForm = () => {
     Alert.alert('Message', message);
   };
 
-  const handleClickOnEye = () => setShowPassword(!showPassword);
+  const handleClickOnEye = () => setIsPasswordHidden(!isPasswordHidden);
 
   const rightIcon = () => {
     return (
@@ -35,7 +35,7 @@ const LoginForm = () => {
         <Image
           style={styles.rightIconStyle}
           source={
-            showPassword
+            isPasswordHidden
               ? require('../../assets/icons/open-eye.png')
               : require('../../assets/icons/close-eye.png')
           }
@@ -62,9 +62,7 @@ const LoginForm = () => {
     return isValid;
   };
 
-  const handleLoginSuccess = (
-    data: AuthInitialStateInterface & UserInterface,
-  ) => {
+  const handleLoginSuccess = (data: LoginResponseInterface) => {
     dispatch(
       setCredentials({
         token: data.token,
@@ -87,9 +85,9 @@ const LoginForm = () => {
     );
   };
 
-  const handleLoginError = (error: TypeError) => {
+  const handleLoginError = (error: any) => {
     dispatch(hideLoader());
-    setApiError(error.message);
+    setApiError(error.response?.data?.message || error.message);
   };
 
   const handleLogin = () => {
@@ -126,7 +124,7 @@ const LoginForm = () => {
         onChangeText={value => handleInputChange('password', value)}
         error={inputsErrors.passwordError}
         rightIcon={rightIcon}
-        showPassword={showPassword}
+        showPassword={isPasswordHidden}
       />
       <Pressable onPress={() => showMessage('Forget password coming soon!')}>
         <Text style={styles.forgetPasswordTitle}>Forget password?</Text>

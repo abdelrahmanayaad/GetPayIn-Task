@@ -9,7 +9,7 @@ type InputsErrorType = {
   passwordError: string;
 };
 
-const useForm = () => {
+const useLoginForm = () => {
   const [inputs, setInputs] = useState<InputsType>({
     username: '',
     password: '',
@@ -36,4 +36,4 @@ const useForm = () => {
   };
 };
 
-export default useForm;
+export default useLoginForm;

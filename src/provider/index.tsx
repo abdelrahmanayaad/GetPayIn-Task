@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import { CustomInternetConnection, Loader } from '../components/ui';
 import { store } from '../store';
 
+const queryClient = new QueryClient();
+
 const Providers = ({ children }: PropsWithChildren) => {
-  const queryClient = new QueryClient();
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>

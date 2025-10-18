@@ -6,4 +6,5 @@ export const COLORS = {
   gray_5d5d5dff: '#5d5d5dff',
   gray_aaa: '#aaa',
   gray_ddd: '#ddd',
+  error: 'rgba(253, 53, 53, 1)',
 };

@@ -2,6 +2,9 @@ import { Alert } from 'react-native';
 import { HomeScreenNavigationProp } from '../navigation/types';
 import { CategoryType } from '../types/types';
 
+export const BASE_URL = 'https://dummyjson.com';
+export const SUPER_ADMIN_USERNAME = 'emilys';
+
 export const FONTS = {
   xs: 12,
   sm: 14,

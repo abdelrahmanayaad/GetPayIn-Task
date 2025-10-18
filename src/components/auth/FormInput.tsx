@@ -1,10 +1,8 @@
 import React, { JSX } from 'react';
 import {
-  Image,
-  ImageURISource,
-  Pressable,
   StyleSheet,
   Text,
+  TextInputProps,
   View,
   ViewStyle,
 } from 'react-native';
@@ -33,7 +31,7 @@ const FormInput = ({
   onChangeText,
   showPassword,
   ...props
-}: FormInputType) => {
+}: FormInputType & TextInputProps) => {
   return (
     <View style={[styles.inputContainer, formInoutContainer]}>
       <Text style={styles.labelStyle}>{label}</Text>

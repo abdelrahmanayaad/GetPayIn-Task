@@ -113,18 +113,30 @@ const LoginForm = () => {
         label="Username"
         placeholder="Enter your username"
         type="username"
-        onChangeText={value => handleInputChange('username', value)}
+        value={inputs.username}
+        onChangeText={value => {
+          setApiError('');
+          handleInputChange('username', value);
+        }}
         error={inputsErrors.usernameError}
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <FormInput
         formInoutContainer={styles.formInoutContainer}
         label="Password"
         placeholder="Enter your password"
         type="password"
-        onChangeText={value => handleInputChange('password', value)}
+        value={inputs.password}
+        onChangeText={value => {
+          setApiError('');
+          handleInputChange('password', value);
+        }}
         error={inputsErrors.passwordError}
         rightIcon={rightIcon}
         showPassword={isPasswordHidden}
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <Pressable onPress={() => showMessage('Forget password coming soon!')}>
         <Text style={styles.forgetPasswordTitle}>Forget password?</Text>

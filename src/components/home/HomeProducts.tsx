@@ -9,12 +9,14 @@ import {
   View,
 } from 'react-native';
 import { HomeScreenNavigationProp } from '../../navigation/types';
+import { HomeProductsInterface } from '../../types/types';
 import { FONTS, FONTS_FAMILY } from '../../utils/constants';
 import ProductCard from './ProductCard';
 
-const HomeProducts = () => {
+const HomeProducts = ({ products }: HomeProductsInterface) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const handleSeeAll = () => navigation.navigate('Products');
+  const handleSeeAll = () => navigation.navigate('Products', { products });
+
   return (
     <View style={styles.productsContainer}>
       <View style={styles.productHeaderStyle}>
@@ -30,8 +32,8 @@ const HomeProducts = () => {
       <FlatList
         numColumns={2}
         columnWrapperStyle={styles.columnWrapperStyle}
-        data={[1, 2, 3, 4, 5]}
-        renderItem={() => <ProductCard />}
+        data={products.slice(0, 4)}
+        renderItem={({ item }) => <ProductCard product={item} />}
         keyExtractor={item => item.toString()}
       />
     </View>

@@ -1,6 +1,3 @@
-import { ImageURISource } from 'react-native';
-import { HomeScreenNavigationProp } from '../navigation/types';
-
 // global state types
 export interface LoaderInitialStateInterface {
   isLoading: boolean;
@@ -39,10 +36,28 @@ export interface LoginResponseInterface {
   token: string;
 }
 
-// Categories types
+// Products types
+export interface ProductInterface {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  thumbnail: string;
+  category: string;
+  brand?: string;
+  stock: number;
+}
 
-export type CategoryType = {
+export interface HomeProductsInterface {
+  products: ProductInterface[];
+}
+
+// Categories types
+export interface CategoryInterface {
+  slug: string;
   name: string;
-  image: ImageURISource;
-  onPress: (navigation: HomeScreenNavigationProp) => void;
-};
+  url: string;
+}
+export interface HomeCategoriesInterface {
+  categories: CategoryInterface[];
+}

@@ -3,8 +3,14 @@ import { Alert, Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CustomButton } from '../../components/ui';
 import { COLORS } from '../../utils/theme';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/auth';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import { ProfileScreenNavigationProp } from '../../navigation/types';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
@@ -24,7 +30,13 @@ const Profile = () => {
             {
               text: 'Logout',
               onPress: () => {
-                console.log('User logged out');
+                dispatch(logout());
+                navigation.dispatch(
+                  CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'AuthStack' }],
+                  }),
+                );
               },
               style: 'destructive',
             },

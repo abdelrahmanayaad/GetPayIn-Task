@@ -14,8 +14,7 @@ import { COLORS } from '../../utils/theme';
 const Category = ({ route }: { route: CategoryRouteProp }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
-  const category = route.params.category;
-
+  const { category, products } = route.params;
   const handleGoBack = () => navigation.goBack();
 
   return (
@@ -33,9 +32,9 @@ const Category = ({ route }: { route: CategoryRouteProp }) => {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         columnWrapperStyle={styles.columnWrapperStyle}
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-        renderItem={() => <ProductCard />}
-        keyExtractor={item => item.toString()}
+        data={products}
+        renderItem={({ item }) => <ProductCard product={item} />}
+        keyExtractor={item => item.id.toString()}
       />
     </SafeAreaView>
   );

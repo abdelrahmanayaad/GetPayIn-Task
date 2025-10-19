@@ -126,7 +126,6 @@ const LoginForm = () => {
         label="Password"
         placeholder="Enter your password"
         type="password"
-        value={inputs.password}
         onChangeText={value => {
           setApiError('');
           handleInputChange('password', value);

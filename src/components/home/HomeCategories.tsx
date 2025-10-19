@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   Image,
@@ -7,27 +8,57 @@ import {
   Text,
   View,
 } from 'react-native';
-import { CategoryType } from '../../types/types';
-import { categories, FONTS, FONTS_FAMILY } from '../../utils/constants';
-import { COLORS } from '../../utils/theme';
-import { useNavigation } from '@react-navigation/native';
 import { HomeScreenNavigationProp } from '../../navigation/types';
+import { CategoryInterface, HomeCategoriesInterface } from '../../types/types';
+import { FONTS, FONTS_FAMILY } from '../../utils/constants';
+import { COLORS } from '../../utils/theme';
+import { useProductsByCategory } from '../../apis/products/Products';
+import { useDispatch } from 'react-redux';
+import { hideLoader, showLoader } from '../../store/loader';
 
-const HomeCategories = () => {
+const HomeCategories = ({ categories }: HomeCategoriesInterface) => {
+  const [selectedItem, setSelectedItem] = useState<string>('');
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const renderCategories = ({ item }: { item: CategoryType }) => {
-    return (
-      <Pressable
-        onPress={() => item.onPress(navigation)}
-        style={styles.categoryItemContainer}
-      >
-        <View style={styles.categoryViewStyle}>
-          <Image source={item.image} style={styles.categoryLogoStyle} />
-        </View>
-        <Text style={styles.labelStyle}>{item.name}</Text>
-      </Pressable>
-    );
+  const dispatch = useDispatch();
+
+  const { data, isFetching } = useProductsByCategory(selectedItem);
+
+  useEffect(() => {
+    if (selectedItem && data && !isFetching) {
+      dispatch(hideLoader());
+      const selectedCategory = categories.find(
+        cat => cat.slug === selectedItem,
+      );
+      if (selectedCategory) {
+        navigation.navigate('Category', {
+          category: selectedCategory.name,
+          products: data.products,
+        });
+      }
+      setSelectedItem('');
+    }
+  }, [data, isFetching, selectedItem, navigation, dispatch, categories]);
+
+  const handleCategoryPress = (item: CategoryInterface) => {
+    setSelectedItem(item.slug);
+    dispatch(showLoader());
   };
+
+  const CategoryItem = ({ item }: { item: CategoryInterface }) => (
+    <Pressable
+      onPress={() => handleCategoryPress(item)}
+      style={styles.categoryItemContainer}
+    >
+      <View style={styles.categoryViewStyle}>
+        <Image
+          source={require('../../assets/icons/category.png')}
+          style={styles.categoryLogoStyle}
+        />
+      </View>
+      <Text style={styles.labelStyle}>{item.name}</Text>
+    </Pressable>
+  );
+
   return (
     <View style={styles.categoriesContainer}>
       <Text style={styles.categoriesTitle}>Categories</Text>
@@ -35,7 +66,7 @@ const HomeCategories = () => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={categories}
-        renderItem={renderCategories}
+        renderItem={({ item }) => <CategoryItem item={item} />}
       />
     </View>
   );

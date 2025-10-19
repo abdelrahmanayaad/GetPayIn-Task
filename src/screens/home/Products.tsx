@@ -4,13 +4,16 @@ import { Image, Pressable, StyleSheet, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ProductCard } from '../../components/home';
+import {
+  HomeScreenNavigationProp,
+  ProductRouteProp,
+} from '../../navigation/types';
 import { FONTS, FONTS_FAMILY } from '../../utils/constants';
 import { COLORS } from '../../utils/theme';
-import { HomeScreenNavigationProp } from '../../navigation/types';
 
-const Products = () => {
+const Products = ({ route }: { route: ProductRouteProp }) => {
+  const { products } = route?.params;
   const navigation = useNavigation<HomeScreenNavigationProp>();
-
   const handleGoBack = () => navigation.goBack();
 
   return (
@@ -28,8 +31,8 @@ const Products = () => {
         numColumns={2}
         showsVerticalScrollIndicator={false}
         columnWrapperStyle={styles.columnWrapperStyle}
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-        renderItem={() => <ProductCard />}
+        data={products}
+        renderItem={({ item }) => <ProductCard product={item} />}
         keyExtractor={item => item.toString()}
       />
     </SafeAreaView>

@@ -22,7 +22,7 @@ A React Native project built as part of a technical task to demonstrate authenti
 
 ## 🛠️ Tech Stack
 
-- **React Native** (v0.81.x)
+- **React Native** (v0.82.0)
 - **TypeScript**
 - **React Navigation**
 - **React Query**
@@ -47,6 +47,8 @@ A React Native project built as part of a technical task to demonstrate authenti
    npm install
     # or
    yarn install
+   # For iOS, also install pods
+   cd ios && pod install && cd ..
    ```
 
 3. Start the Metro bundler:
@@ -79,7 +81,7 @@ A React Native project built as part of a technical task to demonstrate authenti
    GetPayIn-Task/
    │
    ├── src/
-   │      ├── api/               # apis
+   │      ├── api/               # API services and request configurations
    │      ├── navigation/        # App navigation (stacks, tabs)
    │      ├── screens/           # All app screens
    │      ├── store/             # Redux Toolkit slices & store
@@ -87,7 +89,7 @@ A React Native project built as part of a technical task to demonstrate authenti
    │      ├── hooks/             # Custom React hooks
    │      ├── utils/             # Helpers and constants
    │      └── assets/            # Images, fonts, etc.
-   │      └── types/             # types.
+   │      └── types/             # TypeScript type definitions
    │
    └── App.tsx                # Entry point
    ```

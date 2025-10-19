@@ -36,6 +36,7 @@ export const useProductsByCategory = (category: string) =>
   useQuery({
     queryKey: ['productsByCategory', category],
     queryFn: () => ProductsService.getProductsByCategory(category),
+    enabled: !!category,
     retry: 2,
     staleTime: 1000 * 60 * 5,
   });

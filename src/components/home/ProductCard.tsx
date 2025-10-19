@@ -56,7 +56,7 @@ const ProductCard = ({ product }: { product: ProductInterface }) => {
         <Text numberOfLines={1} style={styles.productNameStyle}>
           {product.title}
         </Text>
-        <Text>{product.price}</Text>
+        <Text>{`$${product.price}`}</Text>
       </View>
       <Text numberOfLines={2} style={styles.productDescriptionStyle}>
         {product.description}

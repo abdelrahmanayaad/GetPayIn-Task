@@ -34,7 +34,7 @@ const HomeProducts = ({ products }: HomeProductsInterface) => {
         columnWrapperStyle={styles.columnWrapperStyle}
         data={products.slice(0, 4)}
         renderItem={({ item }) => <ProductCard product={item} />}
-        keyExtractor={item => item.toString()}
+        keyExtractor={item => item.id.toString()}
       />
     </View>
   );

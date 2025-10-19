@@ -34,7 +34,7 @@ const Category = ({ route }: { route: CategoryRouteProp }) => {
         columnWrapperStyle={styles.columnWrapperStyle}
         data={products}
         renderItem={({ item }) => <ProductCard product={item} />}
-        keyExtractor={item => item.toString()}
+        keyExtractor={item => item.id.toString()}
       />
     </SafeAreaView>
   );

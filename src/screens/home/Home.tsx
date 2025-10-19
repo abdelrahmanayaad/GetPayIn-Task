@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../../utils/theme';
@@ -22,12 +22,16 @@ const Home = () => {
     isRefetching: isProductsRefetching,
   } = useAllProducts();
 
-  if (isLoading && isProductsLoading) {
-    dispatch(showLoader());
-    return;
+  useEffect(() => {
+    if (isLoading || isProductsLoading) {
+      dispatch(showLoader());
+    } else {
+      dispatch(hideLoader());
+    }
+  }, [isLoading, isProductsLoading, dispatch]);
+  if (isLoading || isProductsLoading || !data || !products) {
+    return null;
   }
-
-  if (data && products) dispatch(hideLoader());
 
   const handleRefresh = () => {
     refetch();
